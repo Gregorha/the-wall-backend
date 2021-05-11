@@ -5,6 +5,7 @@ export const messages = [
     authorName: 'John Doe',
     title: 'Test title',
     body: 'Body content text',
+    authorId: "1234"
   },
   {
     id: "2",
@@ -12,6 +13,7 @@ export const messages = [
     authorName: 'John Doe',
     title: 'Test title',
     body: 'Body content text',
+    authorId: "1234"
   },
   {
     id: "3",
@@ -19,5 +21,6 @@ export const messages = [
     authorName: 'Jane Doe',
     title: 'Test title',
     body: 'Body content text',
+    authorId: "1234"
   },
 ];

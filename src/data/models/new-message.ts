@@ -1,3 +1,8 @@
-import { NewMessageData } from '@/domain/entities';
+import { Message, NewMessageData } from '@/domain/entities';
 
-export type NewMessageModel = NewMessageData;
+export interface MessageModel extends Omit<Message, 'date'> {
+  date: number;
+}
+export interface NewMessageModel extends Omit<NewMessageData, 'message'> {
+  message: MessageModel;
+}
