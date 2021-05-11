@@ -12,7 +12,7 @@ export class AuthenticateUserController implements Controller {
       const authData = await this.authenticateUser.auth(request.body);
       if (authData.isLeft()) {
         const error = authData.value;
-        if (authData.value.type === 'userNotFoundError') {
+        if (authData.value.type === 'unexpectedError') {
           return serverError(error);
         }
         return badRequestError(error);

@@ -8,7 +8,6 @@ export class LoadMessagesController implements Controller {
   async handle(): Promise<HttpResponse<MessageViewModel[]>> {
     try {
       const messages = await this.loadMessages.load();
-      console.log('ENTROU AQUI');
       return ok(MessageViewModel.mapCollection(messages));
     } catch (error) {
       return serverError(error);

@@ -1,0 +1,1 @@
+Cada controller cuida de uma api, no caso do do express, cada controller cuida de uma rota.
