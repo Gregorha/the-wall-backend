@@ -1,4 +1,4 @@
-import { NewMessageData } from '@/domain/entities';
+import { NewMessageData, User } from '@/domain/entities';
 import { InvalidMessageError } from '@/domain/errors';
 import { SaveMessage } from '@/domain/usecases/save-message/save-message';
 import { SaveMessageResponse } from '@/domain/usecases/save-message/save-message-response';
@@ -12,25 +12,16 @@ export class SaveMessageService implements SaveMessage {
   //AQUI TEMOS QUE COLOCAR AS REGRAS DE NEGÓCIO, COMO POR EXEMPLO CRIPTOGRAFAR UMA SENHA ANTES DE SALVAR NO BANCO.
 
   constructor(private readonly saveMessageRepository: SaveMessageRepository) {}
-  async save(newMessageData: NewMessageData): Promise<SaveMessageResponse> {
+  async save(newMessageData: NewMessageModel): Promise<SaveMessageResponse> {
     try {
-      const { authorName, body, date, id, title } = newMessageData.message;
+      const { body, title } = newMessageData.message;
 
       const invalidFields = [];
       if (body.length < 6) {
         invalidFields.push('body');
       }
-      if (title.length < 6) {
+      if (title.length < 3) {
         invalidFields.push('title');
-      }
-      if (!authorName) {
-        invalidFields.push('authorName');
-      }
-      if (!id) {
-        invalidFields.push('id');
-      }
-      if (!date) {
-        invalidFields.push('date');
       }
 
       if (invalidFields.length > 0) {
@@ -39,7 +30,8 @@ export class SaveMessageService implements SaveMessage {
 
       const repoNewMessageData = {
         ...newMessageData,
-        message: { ...newMessageData.message, date: date.getTime() },
+        date: new Date().getTime(),
+        message: { ...newMessageData.message },
       };
       await this.saveMessageRepository.saveMessage(repoNewMessageData);
       return right(undefined);

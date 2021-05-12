@@ -4,19 +4,20 @@ import { Either, left, right } from '@/shared/either';
 import { UnexpectedError } from '@/shared/errors';
 import { users } from '../data-sources/users';
 import { messages } from '../data-sources';
-import { NewMessageModel } from '@/data/models';
+import { NewMessageRepo } from '@/data/models/new-message-repo';
 
-export class FakeRegisterUserRepository implements SaveMessageRepository {
+export class FakeSaveMessageRepository implements SaveMessageRepository {
   async saveMessage({
-    message: { body, date, title },
+    message: { body, title },
     userId,
-  }: NewMessageModel): Promise<
+    date,
+  }: NewMessageRepo): Promise<
     Either<UnexpectedError | UserNotFoundError, void>
   > {
     try {
       const user = users.find((u) => u.id === userId);
       if (!user) {
-        return left(UserNotFoundError);
+        return left(new UserNotFoundError());
       }
       messages.push({
         authorId: userId,
@@ -26,7 +27,6 @@ export class FakeRegisterUserRepository implements SaveMessageRepository {
         title,
         id: String(messages.length + 1),
       });
-      console.log(users);
       return right(undefined);
     } catch (err) {
       return left(new UnexpectedError(err, 'FakeUserRepository'));
