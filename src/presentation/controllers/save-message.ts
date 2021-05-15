@@ -2,6 +2,7 @@ import { NewMessageData } from '@/domain/entities';
 import { Controller, HttpRequest, HttpResponse, ok } from '../interfaces';
 import { badRequestError, serverError } from '@/presentation/interfaces';
 import { SaveMessage } from '@/domain/usecases';
+import { okNoContent } from '../interfaces/okNoContent';
 
 export class SaveMessageController implements Controller {
   constructor(private readonly saveMessage: SaveMessage) {}
@@ -17,7 +18,7 @@ export class SaveMessageController implements Controller {
         }
         return badRequestError(error);
       }
-      return ok(newMessageResponseOrError.value);
+      return okNoContent(newMessageResponseOrError.value);
     } catch (error) {
       return serverError(error);
     }
