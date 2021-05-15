@@ -1,7 +1,6 @@
 import { SaveMessageRepository } from '@/data/interfaces';
-import { UserNotFoundError } from '@/domain/errors';
 import { Either, left, right } from '@/shared/either';
-import { UnexpectedError } from '@/shared/errors';
+import { NotAuthorizedError, UnexpectedError } from '@/shared/errors';
 import { users } from '../data-sources/users';
 import { messages } from '../data-sources';
 import { NewMessageRepo } from '@/data/models/new-message-repo';
@@ -12,12 +11,12 @@ export class FakeSaveMessageRepository implements SaveMessageRepository {
     userId,
     date,
   }: NewMessageRepo): Promise<
-    Either<UnexpectedError | UserNotFoundError, void>
+    Either<UnexpectedError | NotAuthorizedError, void>
   > {
     try {
       const user = users.find((u) => u.id === userId);
       if (!user) {
-        return left(new UserNotFoundError());
+        return left(new NotAuthorizedError());
       }
       messages.push({
         authorId: userId,
@@ -25,7 +24,7 @@ export class FakeSaveMessageRepository implements SaveMessageRepository {
         body,
         date,
         title,
-        id: String(messages.length + 1),
+        id: messages.length + 1,
       });
       return right(undefined);
     } catch (err) {

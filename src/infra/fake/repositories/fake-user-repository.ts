@@ -1,4 +1,4 @@
-import { UserAlreadyExistsError, UserNotFoundError } from '@/domain/errors';
+import { UserNotFoundError } from '@/domain/errors';
 import { User } from '@/domain/entities';
 import { Either, left, right } from '@/shared/either';
 import { UnexpectedError } from '@/shared/errors';
@@ -12,7 +12,7 @@ export class FakeUserRepository implements UserRepository {
     try {
       const user = users.find((user) => user.id === id);
       if (!user) {
-        return left(new UserNotFoundError(id));
+        return left(new UserNotFoundError(id, true));
       }
       return right(user);
     } catch (err) {

@@ -1,7 +1,9 @@
 export class UserNotFoundError extends Error {
-  constructor(email: string) {
+  constructor(emailOrId: string, isId: boolean = false) {
     super(
-      `It was not possible to found an account associated with this email: ${email}`
+      isId
+        ? 'User not found'
+        : `It was not possible to found an account associated with this email: ${emailOrId}`
     );
   }
   type = 'userNotFoundError';

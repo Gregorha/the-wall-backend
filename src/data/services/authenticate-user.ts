@@ -16,11 +16,11 @@ export class AuthenticaUserService implements AuthenticateUserUseCase {
     private readonly tokenGenerator: TokenGenerator
   ) {}
   async auth(
-    authData: LoginData
+    loginData: LoginData
   ): Promise<
     Either<UnexpectedError | InvalidPasswordError | UserNotFoundError, AuthData>
   > {
-    const responseOrError = await this.userRepository.get(authData.email);
+    const responseOrError = await this.userRepository.get(loginData.email);
 
     if (responseOrError.isLeft()) {
       return left(responseOrError.value);
@@ -28,7 +28,7 @@ export class AuthenticaUserService implements AuthenticateUserUseCase {
 
     const user = responseOrError.value;
 
-    if (!(await this.encryptCompare(authData.password, user.password))) {
+    if (!(await this.encryptCompare(loginData.password, user.password))) {
       return left(new InvalidPasswordError());
     }
     const token = this.tokenGenerator(user.id);
