@@ -1,26 +1,26 @@
 export const messages = [
   {
-    id: "1",
+    id: 1,
     date: 1620473435471,
     authorName: 'John Doe',
     title: 'Test title',
     body: 'Body content text',
-    authorId: "1234"
+    authorId: '1234',
   },
   {
-    id: "2",
+    id: 2,
     date: 1620473446058,
     authorName: 'John Doe',
     title: 'Test title',
     body: 'Body content text',
-    authorId: "1234"
+    authorId: '1234',
   },
   {
-    id: "3",
+    id: 3,
     date: 1620473454247,
     authorName: 'Jane Doe',
     title: 'Test title',
     body: 'Body content text',
-    authorId: "1234"
+    authorId: '1234',
   },
 ];
