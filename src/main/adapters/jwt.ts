@@ -10,7 +10,6 @@ export const tokenGenerator: TokenGenerator = (id: string) => {
 
 export const tokenVerify: TokenVerify = (token: string) => {
   try {
-    console.log('ENTROU AQUI TAMBÉM');
     const splitToken = token.split(' ');
     if (splitToken.length !== 2) {
       throw new Error('Token Error');
@@ -19,6 +18,6 @@ export const tokenVerify: TokenVerify = (token: string) => {
 
     return (<any>decoded).userId;
   } catch (e) {
-    console.error(e);
+    console.error('Error while verifying user token', e);
   }
 };
