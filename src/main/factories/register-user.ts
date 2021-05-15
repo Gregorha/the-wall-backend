@@ -1,6 +1,6 @@
 import { RegisterUserService } from '@/data/services';
 import { SendWelcomeEmailService } from '@/data/services/send-welcome-email';
-import { FakeRegisterUserRepository } from '@/infra/fake/repositories/fake-register-user';
+import { PGRegisterUserRepository } from '@/infra/postgres/repositories/register-user';
 import { RegisterUserController } from '@/presentation/controllers/register-user';
 import { encryptHash } from '../adapters/encrypt';
 import { NodemailerEmailService } from '../adapters/nodemailer-service';
@@ -13,7 +13,7 @@ const makeRegisterUserController = () => {
     env.mailOptions
   );
 
-  const repo = new FakeRegisterUserRepository();
+  const repo = new PGRegisterUserRepository();
   const loader = new RegisterUserService(repo, encryptHash);
   const controller = new RegisterUserController(loader, sendEmail);
   return controller;
