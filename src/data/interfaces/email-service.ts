@@ -2,8 +2,8 @@ import { EmailServiceError } from '@/domain/errors';
 import { Either } from '../../shared/either';
 
 export interface EmailOptions {
-  readonly host: string;
   readonly port: number;
+  readonly host: string;
   readonly username: string;
   readonly password: string;
   readonly from: string;

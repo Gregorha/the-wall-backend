@@ -14,8 +14,8 @@ export class SendWelcomeEmailService implements SendWelcomeEmailUseCase {
     const greetings = 'Hello <b>' + userData.name + '</b>, how are you doing?';
     const customizedHtml = greetings + '<br> <br>' + this.mailOptions.html;
     const options = {
-      host: this.mailOptions.host,
       port: this.mailOptions.port,
+      host: this.mailOptions.host,
       username: this.mailOptions.username,
       password: this.mailOptions.password,
       from: this.mailOptions.from,

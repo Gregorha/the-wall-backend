@@ -3,11 +3,11 @@ const env = {
   secret: '58796f93f68f4a82447faac8751ed9bc',
 
   mailOptions: {
-    host: 'smtp.mailtrap.io',
-    port: 2525,
-    username: '071f95eedaeaf4',
-    password: '55219f9de5a1ea',
-    from: 'The Wall | TSL <email@mail.com>',
+    host: 'smtp-mail.outlook.com',
+    port: 587,
+    username: 'thewalltsl@outlook.com',
+    password: 'a468bc1597a7ee6648dd6b36619bf193',
+    from: 'The Wall | TSL <thewalltsl@outlook.com>',
     to: '',
     subject: 'Another brick in The Wall',
     text:

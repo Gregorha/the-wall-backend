@@ -9,6 +9,7 @@ export class NodemailerEmailService implements EmailService {
       const transporter = nodemailer.createTransport({
         host: options.host,
         port: options.port,
+        secure: false,
         auth: {
           user: options.username,
           pass: options.password,
@@ -22,6 +23,7 @@ export class NodemailerEmailService implements EmailService {
         html: options.html,
       });
     } catch (error) {
+      console.log(error);
       return left(new EmailServiceError());
     }
     return right(undefined);
