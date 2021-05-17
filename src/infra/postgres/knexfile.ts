@@ -16,7 +16,10 @@ const config = {
   },
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL + '?ssl=true',
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    },
     migrations: {
       tableName: 'the_wall_migrations',
       directory: `${__dirname}/migrations`,
