@@ -5,7 +5,7 @@
   "author": "Gregor Hammerschmitt",
   "license": "MIT",
   "scripts": {
-    "start": "yarn knex --knexfile=./src/infra/postgres/knexfile.ts migrate:latest && node dist/src/main/server.js",
+    "start": "yarn knex --knexfile=dist/src/infra/postgres/knexfile.js migrate:latest --env production && node dist/src/main/server.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist/src --copy-files --no-copy-ignored",
     "test": "jest",
     "test:dev": "jest --watch",
