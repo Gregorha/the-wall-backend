@@ -68,6 +68,8 @@ Hosted at [Heroku](https://www.heroku.com/) on https://the-wall-tsl.herokuapp.co
 
 ## Future Improvements
 
- - Tests: So far the project is implementing only integrations tests. One of the strengths of clean architecture is the possibilty to test the code without depending on any external resource. Unit testing should be implemented in the future.
+ - Tests: So far the project is implementing only integration tests. One of the strengths of clean architecture is the possibilty to test the code without depending on any external resource. Unit testing should be implemented in the future.
  - In memory tests: The project is using local db for integration tests, should implement in memory db in the future. This way tests would not affect local db.
- - Value objects: The project is only doing really basic and simple validation. Should implement value objects to improve validation and more specific error messages.
+ - Value objects: The project is only doing really basic and simple validation. Should implement value objects to improve validation and return more specific error messages.
+ - Pagination: Messages results should have pagination options.
+ - Documentation: Use sweagger to improve documentation
