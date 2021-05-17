@@ -16,7 +16,7 @@ const config = {
   },
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE_URL + '?ssl=true',
     migrations: {
       tableName: 'the_wall_migrations',
       directory: `${__dirname}/migrations`,
