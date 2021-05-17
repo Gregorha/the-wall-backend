@@ -22,7 +22,6 @@ export class FakeUser {
       password: this.password,
     });
     if (authData.isLeft()) {
-      console.log(authData.value);
       return;
     }
     return authData.value;

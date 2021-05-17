@@ -23,7 +23,7 @@ export class NodemailerEmailService implements EmailService {
         html: options.html,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return left(new EmailServiceError());
     }
     return right(undefined);
