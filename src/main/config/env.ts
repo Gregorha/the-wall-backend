@@ -1,7 +1,7 @@
 const env = {
   mailOptions: {
     host: process.env.EMAIL_HOST || '',
-    port: process.env.EMAIL_PORT || '',
+    port: Number(process.env.EMAIL_PORT) || 0,
     username: '',
     password: '',
     from: 'The Wall | TSL <thewalltsl@outlook.com>',

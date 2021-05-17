@@ -1,10 +1,19 @@
+import dotenv from 'dotenv';
+
+dotenv.config({
+  path:
+    process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development'
+      ? __dirname + '/../../../.env.test'
+      : __dirname + '/../../../.env',
+});
+
 const config = {
   development: {
     client: 'pg',
     connection: {
-      database: 'tsl_the_wall',
-      user: 'tsl_user',
-      password: '0000',
+      database: process.env.PG_DATABASE,
+      user: process.env.PG_USER,
+      password: process.env.PG_PASS,
     },
     migrations: {
       tableName: 'the_wall_migrations',
@@ -17,9 +26,9 @@ const config = {
   test: {
     client: 'pg',
     connection: {
-      database: 'tsl_the_wall',
-      user: 'tsl_user',
-      password: '0000',
+      database: process.env.PG_DATABASE,
+      user: process.env.PG_USER,
+      password: process.env.PG_PASS,
     },
     migrations: {
       tableName: 'the_wall_migrations',
