@@ -1,12 +1,9 @@
 const env = {
-  port: process.env.PORT || 5000,
-  secret: '58796f93f68f4a82447faac8751ed9bc',
-
   mailOptions: {
     host: 'smtp-mail.outlook.com',
     port: 587,
-    username: 'thewalltsl@outlook.com',
-    password: 'a468bc1597a7ee6648dd6b36619bf193',
+    username: '',
+    password: '',
     from: 'The Wall | TSL <thewalltsl@outlook.com>',
     to: '',
     subject: 'Another brick in The Wall',

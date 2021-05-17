@@ -2,6 +2,7 @@ import { User } from '@/domain/entities';
 import { EmailServiceError } from '@/domain/errors';
 import { SendWelcomeEmailUseCase, SendEmailResponse } from '@/domain/usecases';
 import { Either, left, right } from '@/shared/either';
+import { Console } from 'console';
 import { EmailOptions, EmailService } from '../interfaces/email-service';
 
 export class SendWelcomeEmailService implements SendWelcomeEmailUseCase {
@@ -16,8 +17,8 @@ export class SendWelcomeEmailService implements SendWelcomeEmailUseCase {
     const options = {
       port: this.mailOptions.port,
       host: this.mailOptions.host,
-      username: this.mailOptions.username,
-      password: this.mailOptions.password,
+      username: process.env.EMAIL || '',
+      password: process.env.PASSWORD || '',
       from: this.mailOptions.from,
       to: userData.name + '<' + userData.email + '>',
       subject: this.mailOptions.subject,
