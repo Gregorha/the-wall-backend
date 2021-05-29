@@ -64,7 +64,7 @@ Postgress with *knex* as query builder.
 
 ## Deployment
 
-Hosted at [Heroku](https://www.heroku.com/) on https://the-wall-tsl.herokuapp.com/api/
+Hosted at [Heroku](https://www.heroku.com/) on https://the-wall-tsl.herokuapp.com/api/.
 
 ## Future Improvements
 
@@ -72,4 +72,4 @@ Hosted at [Heroku](https://www.heroku.com/) on https://the-wall-tsl.herokuapp.co
  - In memory tests: The project is using local db for integration tests, should implement in memory db in the future. This way tests would not affect local db.
  - *Value objects*: The project is only doing really basic and simple validation. *Value objects* should be implemented to improve validation and return more specific error messages.
  - Pagination: Messages results should have pagination options.
- - Documentation: Use *sweagger* to improve documentation
+ - Documentation: Use *sweagger* to improve documentation.
